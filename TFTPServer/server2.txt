@@ -1,0 +1,59 @@
+
+Please make sure this machine has java environment by typing “java -version” in the terminal. (otherwise please install JDK).
+
+0. Extract this file into some writable path.
+
+*************************
+**How to use the Client**
+*************************
+
+1. Open terminal(or CMD), change path to the Client’s src folder. e.g.“cd (path)/TFTP/TFTPClient/src”.
+
+2. Compile all the .java files using “javac *.java”. 
+
+3. Commands: “java TFTPClient [host] [Request Type] [Filename] (mode)”. Mode can be blank, which means using default mode “octet”
+e.g.: 
+Download(read) file using octet mode: “java TFTPClient 127.0.0.1 R test.jpg”
+Download(read) file using ascii mode: “java TFTPClient 127.0.0.1 R README.txt netascii”
+
+Upload(write) file using octet mode: “java TFTPClient 127.0.0.1 W test.jpg”
+Upload(write) file using ascii mode: “java TFTPClient 127.0.0.1 W README.txt netascii”
+
+Please note that client is not allowed to upload files that are already exsited(has the same name) at server side. 
+
+
+4. Files are stored at the default folder which is (path)/TFTP/TFTPClient
+
+NOTE:
+-Each transfer will allow up to 5 times of time out, after which the connection will be closed.
+-Checksum of each file is provided after successfully transfer.
+-File name should not contain ” ”(space)
+-Please limit file size less than 35MB, file lager than this may get wrong during transfer
+
+*************************
+**How to run the Server**
+*************************
+
+1. Open terminal (or CMD), change path to the Server’s src folder. e.g.“cd (path)/TFTP/TFTPServer/src”.
+
+2. Compile all the .java files using “javac *.java”. 
+
+3. Run the server using “java TFTP TFTPServer”， then server will start and listen to port 6969.
+
+4. Files are stored at default folder which is (path)/TFTP/TFTPServer. 
+
+Note:
+-The server can support up to 2 clients at the same time. No guarantee if clients are more than 2.
+-Checksum of each file is provided after successfully transfer.
+-File name should not contain ” ”(space)
+-Please limit file size less than 35MB, file lager than this may get wrong during transfer
+
+**************************************
+**How to view source code in Eclipse**
+**************************************
+1. Open Eclipse, create a project by choosing “File->New—>Java Project”, type the project name and use the default options. Then the project will be visible in the Package Explorer on the left.
+
+2. Expand the project in the Package Explorer, right click “src” then choose “Import”, choose “General->File system”, browse to choose the “src” folder which contains the source code.
+
+3. Choose all .java files then click “finish”. All the .java files should then be in the default package of the project.
+
